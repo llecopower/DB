@@ -35,7 +35,7 @@ namespace DB
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = "INSERT INTO table_db VALUES('" + textBoxName.Text + "','" + textBoxCity.Text + "','" + textBoxCountry + "')";
+            cmd.CommandText = "INSERT INTO table_db VALUES('" + textBoxName.Text + "','" + textBoxCity.Text + "','" + textBoxCountry.Text + "')";
 
             cmd.ExecuteNonQuery();
 
