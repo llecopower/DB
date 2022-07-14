@@ -21,6 +21,8 @@ namespace DB
         public Form1()
         {
             InitializeComponent();
+
+            disp_data();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,14 +37,56 @@ namespace DB
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = "INSERT INTO table_db VALUES('" + textBoxName.Text + "','" + textBoxCity.Text + "','" + textBoxCountry.Text + "')";
+            cmd.CommandText = "INSERT INTO table_db VALUES('" + textBoxName.Text + "'," +
+                "'" + textBoxCity.Text + "','" + textBoxCountry.Text + "')";
 
             cmd.ExecuteNonQuery();
 
             con.Close();
+            disp_data();
+
             MessageBox.Show("Record Inserted Successfully");
 
         }
+
+
+
+
+        public void disp_data()
+
+        {
+            con.Open();
+
+            SqlCommand cmd = con.CreateCommand();
+
+            cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "SELECT * FROM table_db";
+
+            cmd.ExecuteNonQuery();
+
+            DataTable dt = new DataTable();
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(dt);
+
+            dataGridViewDB.DataSource = dt;
+
+            con.Close();
+
+
+
+
+
+
+        
+        
+        
+        }
+
+
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
