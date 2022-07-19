@@ -130,6 +130,7 @@
             this.buttonDisplay.TabIndex = 10;
             this.buttonDisplay.Text = "Display";
             this.buttonDisplay.UseVisualStyleBackColor = true;
+            this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click);
             // 
             // buttonUpdate
             // 
@@ -149,6 +150,7 @@
             this.buttonExit.TabIndex = 12;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // btnSearch
             // 

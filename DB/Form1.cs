@@ -22,7 +22,7 @@ namespace DB
         {
             InitializeComponent();
 
-            disp_data();
+           // disp_data();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -88,7 +88,18 @@ namespace DB
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            con.Open();
 
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM table_test WHERE name='" + textBoxName.Text + "'";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            dataGridViewDB.DataSource = dt;
+
+            con.Close();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -125,8 +136,14 @@ namespace DB
 
         }
 
+        private void buttonDisplay_Click(object sender, EventArgs e)
+        {
+            disp_data();
+        }
 
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }
